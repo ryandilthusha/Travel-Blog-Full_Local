@@ -133,12 +133,56 @@ router.post('/citiesExplored', authenticateToken, async (req, res) => {
 
 
 
+//................................. iii. ROUTE FOR POST(UPDATE) THE Travel Stat - Favorite Destination .................................//
+// Example using Express.js
+router.post('/favoriteDestination', authenticateToken, async (req, res) => {
+    const { userId } = req.user; // Extract user ID from JWT
+    const { favoriteDestination } = req.body;
+
+    try {
+        // Update favorite destination for the user in the database
+        const result = await query(
+            'UPDATE travel_stats SET favorite_destination = $1 WHERE user_id = $2 RETURNING favorite_destination;',
+            [favoriteDestination, userId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'User stats not found.' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (error) {
+        console.error('Failed to update favorite destination:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 
 
 
+//................................. iv. ROUTE FOR POST(UPDATE) THE Travel Stat - Bucket List .................................//
+router.post('/bucketList', authenticateToken, async (req, res) => {
+    const { userId } = req.user; // Extract user ID from JWT
+    const { bucketList } = req.body;
 
+    try {
+        // Update the bucket list for the user in the database
+        const result = await query(
+            'UPDATE travel_stats SET bucket_list = $1 WHERE user_id = $2 RETURNING bucket_list;',
+            [bucketList, userId]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'User stats not found.' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (error) {
+        console.error('Failed to update bucket list:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 
