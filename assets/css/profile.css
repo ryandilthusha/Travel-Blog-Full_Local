@@ -1,0 +1,283 @@
+/* General background styles, font setup, and padding for the main content area */
+body, html {
+    height: 100%;
+    background: url('../img/climber-climbing-hiker-hiking.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Consistent padding and background for the content containers */
+.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+/* ------------------------------------------ */
+/* Profile header styles */
+
+.profile-header-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Positioning the edit profile picture button */
+.profile-image-container {
+    position: relative;  /* Same as default css Static Positioning but can change the position of the element using top, left, right and bottom styles. So using those styles we can position of the element without affecting other elements' positions. */
+}
+
+.profile-header-img {
+    width: 120px; /* Adjusted size for profile image */
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid #6bc6d6;
+    margin: 0 auto;
+}
+
+
+
+/* ------------------------------------------ */
+/* Edit profile picture button styles */
+
+.profile-pic-edit-btn {
+    position: absolute; /* This takes the element out of the normal document flow. Which means it doesn't affect the position of other elements and isn't affected by them. So other elements take the space of this element like it never exists. An absolutely positioned element is positioned relative to its closest relatively postioned element. So we need to play with this Absolute sytle with Relative style!  */
+    bottom: 10px;
+    right: 10px; /* Adjust the position of edit button relative to profile image */
+    background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    border: 1px solid #ff0000;
+}
+
+.profile-pic-edit-btn:hover {
+    color: #ff0000;
+    background: linear-gradient(120deg, #89f7fe 0%, #18cf7a 100%);
+}
+
+
+
+/* ------------------------------------------ */
+/* Button styles */
+
+/* Styles for primary buttons and outline primary buttons. */
+.btn-primary {
+    
+    border-radius: 20px; /* Rounds the borders of buttons. */    
+    font-weight: 700; /* Makes the button text bold. */
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);    
+    border: none;
+}
+
+/* Hover styles for primary buttons and outline primary buttons. */
+.btn-primary:hover {
+    /* Changes the direction of the gradient on hover for a visual effect. */
+    background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%);
+    color: rgb(255, 0, 0);
+}
+
+
+
+
+
+/* ------------------------------------------ */
+/* Form element styles in the user details section */
+
+.user-details-section .form-group label {
+    font-weight: 600;
+}
+
+.user-details-section .form-control {
+    border-radius: 0.25rem;
+    box-shadow: none;
+}
+
+.user-details-section .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+
+
+/* ------------------------------------------ */
+/* Styles for the traveler stats section */
+
+.travel-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-item {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 0.5rem 0;
+    position: relative; /* Set relative positioning for the detail-item container. So we can adjust the Edit button element relate to this element */
+}
+
+.detail-item .title {
+    font-weight: bold;
+}
+
+.detail-item .value {
+    margin-left: 8px;
+}
+
+.edit-detail-btn {
+    position: absolute; /* Need to position this relate to whole detail-item flex-box.*/
+    top: 50%; /* Align vertical center */
+    right: 0; /* Align to the far right */
+    transform: translateY(-50%); /* Center button correctly on the y-axis */
+    border: none; /* Remove border */
+    background: #fff; /* Set background to white */
+    color: #007bff; /* Set text color for the button */
+    text-decoration: underline; /* Underline to indicate it's clickable */
+    box-shadow: none; /* Remove any box shadows */
+}
+
+.edit-detail-btn:hover {
+    background: #86866973; /* Slightly different background on hover */
+    color: #eb1c1c; /* Darken text color on hover */
+}
+
+
+
+
+/* ------------------------------------------ */
+/* Styles for the Recent Review Card section */
+
+.review-card {
+    background: linear-gradient(120deg, #f3f3f3 0%, #89f7fe 100%);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+}
+
+.post-image {
+    width: 80px; /* Thumbnail size */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+.post-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.post-summary {
+    font-size: 0.9rem;
+    color: #606770;
+    font-weight: 600;
+    margin-bottom: 5px;    
+}
+
+.post-link {
+    color: #007bffaf;    
+    font-weight: 600;
+    text-decoration: none;    
+    
+    position:absolute;
+    position: relative;
+    left: 0px; 
+    top: 8px;
+}
+
+.post-link:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* ------------------------------------------ */
+/* Additional styles for the 'View All Posts' link */
+.view-all-posts {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.view-all-posts:hover {
+    color: #ff2600;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Additional styles for the 'View All Posts' link */
+.view-all-posts {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.view-all-posts:hover {
+    color: #ff2600;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+

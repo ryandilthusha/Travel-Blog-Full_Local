@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <!-- Bootstrap CSS for quick styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts for improved typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for a wide range of icons -->
+    <script src="https://kit.fontawesome.com/81702bbfaa.js" crossorigin="anonymous"></script>
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="./assets/css/login.css">
+    
+</head>
+<body>
+
+
+<!-- Fixed Home Button for navigation -->
+<a href="/" class="btn btn-outline-primary home-button">
+    <i class="fas fa-home"></i>
+</a>
+
+
+<!-- Main Container for Signup centered in the viewport -->
+<div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col-10 col-md-8">
+
+            <!-- Card for Signup Content -->
+            <div class="card custom-login-card">
+                <!-- Card Body for padding and organization -->
+                <div class="card-body">
+                    <!-- Signup Heading -->
+                    <h3 class="text-center mb-4">Create an account</h3>
+
+
+                    <!-- Social Media Signup Options -->
+                    <div class="social-login text-center mb-3">
+                        <!-- Social Media Icons -->
+                        <a href="https://www.facebook.com/" class="btn">    <span class="fa-brands fa-facebook fa-2xl" style="color: #4194ec;">            </span>    </a>
+                        <a href="https://twitter.com/" class="btn">         <span class="fa-brands fa-square-x-twitter fa-2xl" style="color: #000000;">    </span>    </a>
+                        <a href="https://accounts.google.com/v3/signin/identifier?continue=https://mail.google.com/mail/&service=mail&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="btn"><span class="fa-brands fa-google-plus fa-2xl" style="color: #ff0000;"></span></a>
+                        <!-- Divider and Text for alternative sign up option -->
+                        <hr class="my-4">
+                        <p>Or Be Classical</p>
+                    </div>
+
+
+                    <!-- Classical Signup Form -->
+                    <form action="/signup-route" method="post">
+                        <!-- Input Fields with Icons -->
+                        <div class="form-group icon-input">
+                            <i class="fas fa-user"></i>
+                            <input type="text" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group icon-input">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group icon-input">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group icon-input">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+                        
+                        <!-- Terms and Conditions Agreement -->
+                        <div class="custom-control custom-checkbox mb-4">
+                            <input type="checkbox" class="custom-control-input" id="checkbox1">
+                            <label class="custom-control-label" for="checkbox1">I agree to the terms and conditions</label>
+                        </div>
+                        
+                        <!-- Signup Submission Button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-3">SIGN UP</button>
+                        
+                        <!-- Link to Sign In page if user already has an account -->
+                        <div class="text-center">
+                            <a href="./login.html" class="text-muted">Already have an account? Sign In</a>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JavaScript and dependencies for interactive components -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

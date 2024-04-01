@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" rel="stylesheet">
+    <!-- Custom CSS for the login page -->
+    <link rel="stylesheet" href="./assets/css/login.css">
+</head>
+
+
+
+
+
+<body>
+
+<!-- Navigation and Home Button -->
+<!-- Fixed position home button at the top-left corner as a quick navigation to the homepage -->
+<a href="/" class="btn btn-outline-primary home-button">
+    <i class="fas fa-home"></i> <!-- Home icon from Font Awesome -->
+</a>
+
+<!-- Main Content Container -->
+<!-- This container centers the login card vertically and horizontally in the middle of the viewport -->
+<div class="container h-100">
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col col-sm-9 col-md-7 col-lg-5 col-xl-4">
+
+
+            <!-- Login Card -->
+            <!-- This card holds the login form fields and buttons -->
+            <div class="card login-card">
+                <div class="card-body">
+                    <!-- Login Section Heading -->
+                    <h3 class="text-center mb-4">Have an account?</h3>
+                    <!-- Login Form -->
+                    <!-- The form that handles user login with action pointing to the server-side script that processes the login -->
+                    <form action="/your-login-route" method="post">
+                        <!-- Username Input -->
+                        <div class="form-group icon-input">
+                            <i class="fas fa-user"></i> <!-- Username icon -->
+                            <input id="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <!-- Password Input -->
+                        <div class="form-group icon-input">
+                            <i class="fas fa-lock"></i> <!-- Password icon -->
+                            <input id="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <!-- Remember Me Checkbox -->
+                        <div class="custom-control custom-checkbox mb-4">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Remember Me</label>
+                        </div>
+                        <!-- Sign In Button -->
+                        <button id="login_btn" type="button" class="btn btn-primary btn-block mb-3">SIGN IN</button>
+
+                        <!-- Forgot Password Link -->
+                        <div class="text-center mb-4">
+                            <a href="/forgot-password" class="text-muted">Forgot Password?</a>
+                        </div>
+                        <!-- New User Sign Up Button -->
+                        <button type="button" class="btn btn-outline-primary btn-block" onclick="location.href='./signup.html';">NEW USER SIGN UP</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Scripts -->
+<!-- Bootstrap's JavaScript bundle which includes jQuery and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- My Java Script File -->
+<script src="./js/login.js" type="module"></script>     <!--Had to add type 'module' since introducing classes-->
+</body>
+
+
+</html>

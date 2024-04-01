@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for a wide range of icons -->
+    <script src="https://kit.fontawesome.com/81702bbfaa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/profile.css"> <!-- Path to your custom CSS -->   
+
+    
+</head>
+<body>
+
+<div class="container py-4">
+
+
+    <!-- ................ Profile Header Section ................ -->
+    <div class="profile-header-container text-center">
+         <!-- For profile picture and image icon -->
+        <div class="profile-image-container d-inline-block" >
+            <img src="../assets/img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg" alt="Profile Picture" class="profile-header-img mb-2">
+            <!-- Upload Profile Picture Button with FontAwesome Icon -->
+            <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" onclick="document.getElementById('profilePicUpload').click()">
+                <i class="fas fa-camera"></i> <!-- FontAwesome Camera Icon -->
+            </button>
+            <!-- Hidden File Input for Profile Picture Upload -->
+            <input type="file" id="profilePicUpload" class="d-none" accept="image/*">
+        </div>
+        <!-- For profil picture and image icon -->
+        <h2>RyanWick1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu in lorem molestie, non vehicula velit consectetur. Proin nec massa nisi.</p>
+    </div>
+    
+
+    <!-- ................ User Details Editable Section ................ -->
+    <div class="user-details-section">
+        <form>
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Username" value="JohnDoe">
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+                <label for="newPassword">Password</label>
+                <input type="password" id="newPassword" class="form-control" placeholder="New Password">
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm New Password">
+            </div>
+            <!-- Bio -->
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" class="form-control" placeholder="Tell us about yourself..."></textarea>
+            </div>
+            <!-- Other necessary details... -->
+            
+        </form>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</div>
+
+
+
+<!-- -----------     Traveler Stats Section     ----------- -->
+<div class="travel-card container mt-0 mb-4">    
+    <div class="profile-container">
+        <h3 class="card-title">Traveler Stats</h3>
+        <div class="row">
+            <!-- First Column -->
+            <div class="col-md-6">
+                <div class="detail-item">
+                    <span class="title">Countries Visited:</span>
+                    <span class="value">15</span>
+                    <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editCountriesModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+                <div class="detail-item">
+                    <span class="title">Cities Explored:</span>
+                    <span class="value">42</span>
+                    <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editCitiesModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+            </div>
+            <!-- Second Column -->
+            <div class="col-md-6">
+                <div class="detail-item">
+                    <span class="title">Favorite Destination:</span>
+                    <span class="value">Kyoto, Japan</span>
+                    <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editDestinationModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+                <div class="detail-item">
+                    <span class="title">Bucket List:</span>
+                    <span class="value">See the Northern Lights</span>
+                    <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editBucketListModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- -----------     Recent Reviews Section     ----------- -->
+<div class="review-card container py-4">
+    <div class="card-header">
+        <h5 class="card-title">Recent Reviews</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <!-- Individual Review Post with Thumbnail -->
+        <li class="list-group-item">
+            <div class="post-item">
+                <img src="../assets/img/post-thumbnail-1.jpg" alt="Post Title" class="post-image">
+                <div class="post-content">
+                    <h5 class="post-title">A Journey Through the Alps</h5>
+                    <p class="post-summary">Discovering the beauty of the mountains and the adventures they hold...</p>
+                </div>
+                <!-- Link to full blog post -->
+                <a href="/post/alps-journey" class="post-link">Read more</a>
+            </div>
+        </li>
+        
+        
+        <!-- Repeat for other review posts -->
+        <li class="list-group-item">
+            <div class="post-item">
+                <img src="../assets/img/post-thumbnail-1.jpg" alt="Post Title" class="post-image">
+                <div class="post-content">
+                    <h5 class="post-title">A Journey Through the Alps</h5>
+                    <p class="post-summary">Discovering the beauty of the mountains and the adventures they hold...</p>
+                </div>
+                <!-- Link to full blog post -->
+                <a href="/post/alps-journey" class="post-link">Read more</a>
+            </div>
+        </li>
+        
+    </ul>
+    <!-- Link to View All Blog Posts -->
+    <div class="text-center mt-3">
+        <a href="/all-posts" class="view-all-posts">View All Posts</a>
+    </div>
+</div>
+
+
+
+
+
+<!-- Scripts -->
+<!-- Bootstrap's JavaScript bundle which includes jQuery and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

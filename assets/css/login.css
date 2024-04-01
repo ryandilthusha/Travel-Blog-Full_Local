@@ -1,0 +1,125 @@
+/* Applies to the entire document, setting the height to fill the entire viewport. */
+body, html {
+    height: 100%;
+    /* Sets a background image with no repeat, centered in the viewport, and scaled to cover the entire background area. */
+    background: url('../img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* Sets the default font family for the document. */
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Styles the login card specifically. */
+.custom-login-card {
+    /* Sets a light bluish background with transparency. */
+    background: rgba(240, 248, 255, 0.9);
+    /* Rounds the corners of the card. */
+    border-radius: 1rem;
+    /* Removes the default border of the card. */
+    border: none;
+    /* Sets the default text color within the card. */
+    color: #333333;
+    /* Adds spacing below the card. */
+    margin-bottom: 2rem;
+}
+
+/* Targets the container meant for input icon positioning. */
+.icon-input {
+    /* Sets the positioning context for absolute positioning of child elements. */
+    position: relative;
+}
+
+/* Targets icons inside the .icon-input container. */
+.icon-input .fas {
+    /* Absolutely positions the icon inside the relative container. */
+    position: absolute;
+    /* Vertically centers the icon with respect to the input field. */
+    top: 11px;
+    /* Positions the icon from the left of the input field. */
+    left: 15px;
+    /* Sets the color of the icon. */
+    color: #495057;
+    /* Ensures the icon is layered above the input field. */
+    z-index: 10;
+}
+
+/* Targets input fields inside the .icon-input container. */
+.icon-input .form-control {
+    /* Adds padding on the left to make space for the absolutely positioned icon. */
+    padding-left: 40px;
+    /* Makes the input field background transparent. */
+    background: transparent;
+    /* Adds a subtle border around the input field. */
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    /* Rounds the borders of the input field. */
+    border-radius: 20px;
+    /* Removes the default box shadow that appears on input focus. */
+    box-shadow: none;
+    /* Sets a fixed height for the input field. */
+    height: 50px;
+}
+
+/* Targets the placeholder text inside input fields. */
+.icon-input .form-control::placeholder {
+    /* Lightens the placeholder text color. */
+    color: rgba(6, 52, 95, 0.5);
+    /* Ensures the placeholder text is fully opaque. */
+    opacity: 1;    
+}
+
+/* Targets input fields when they are in focus. */
+.icon-input .form-control:focus {
+    /* Sets the border color when the input field is focused. */
+    border-color: #80bdff;
+    /* Removes the outline that browsers might add by default on focus. */
+    outline: 2;
+    /* Ensures no box shadow is applied on focus. */
+    box-shadow: none;
+}
+
+/* Styles for primary buttons and outline primary buttons. */
+.btn-primary, .btn-outline-primary {
+    /* Rounds the borders of buttons. */
+    border-radius: 20px;
+    /* Makes the button text bold. */
+    font-weight: 700;
+    /* Sets a linear gradient background for the buttons. */
+    background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    /* Removes the default border. */
+    border: none;
+}
+
+/* Hover styles for primary buttons and outline primary buttons. */
+.btn-primary:hover, .btn-outline-primary:hover {
+    /* Changes the direction of the gradient on hover for a visual effect. */
+    background-image: linear-gradient(120deg, #66a6ff 0%, #89f7fe 100%);
+}
+
+/* Styles for outline primary buttons. */
+.btn-outline-primary {
+    /* Sets the text color for outline buttons. */
+    color: #66a6ff;
+    /* Sets the border color to match the text. */
+    border-color: #66a6ff;
+    /* Makes the background transparent. */
+    background: transparent;
+    /* Sets the font weight to normal. */
+    font-weight: 400;
+}
+
+/* Styles the custom checkbox to match the primary color theme when checked. */
+/* .custom-control-label is a sibling of .custom-control-input */
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #000000;
+}
+
+/* Positions the home button in a fixed place, ensuring it does not move with scrolling. */
+.home-button {
+    /* Fixes the position of the home button. */
+    position: fixed;
+    /* Positions the home button 20 pixels from the top. */
+    top: 20px;
+    /* Positions the home button 20 pixels from the left. */
+    left: 20px;
+    /* Ensures the home button is above other elements. */
+    z-index: 1000;
+}
