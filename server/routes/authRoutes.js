@@ -5,6 +5,12 @@ const { query } = require('../helpers/db.js');
 // Initializing a router to define routes related to user authentication.
 const router = express.Router();
 
+
+const jwt = require('jsonwebtoken');
+
+
+
+
 // Define a POST route for '/login' to handle user login requests.
 router.post('/login', async (req, res) => {
     try 
@@ -48,13 +54,32 @@ router.post('/login', async (req, res) => {
             // Check if the provided password matches the one stored in the database.
             if (user.password === password) 
             {
-                // If they match, send a response indicating successful login.
+
+                //Generate a JWT when the user successfully logs 
+                //This user object is then ENCODED into a JWT token using jwt.sign(). This will DECODED in server/middleware/authenticateToken.js
+                const token = jwt.sign(
+                    { userId: user.user_id }, // Ensure this matches the database field
+                    process.env.JWT_SECRET, // Replace 'your_secret_key' with a real secret key stored in .env file
+                    { expiresIn: '1h' } // Options: Token expires in 1 hour
+                );     
+                /*
+                Hence the payload encoded into the JWT would like this: 
+                {
+                    userId: "user's unique identifier",
+                    iat: 1619623058,
+                    exp: 1619626658
+                }
+                */
+
+
+                // If user.password === password match, send a response indicating successful login.
                 res.status(200).json({
                     login: true,
                     message: 'Login successful',
+                    token,
                     username: user.username, 
                     bio: user.bio, 
-                    profile_picture: user.profile_picture 
+                    profile_picture: user.profile_picture
                 });
             } 
             // This is what the client (e.g., browser or mobile app) receives as a response:
@@ -92,6 +117,10 @@ router.post('/login', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+
+
+
 
 // Export 'router' so it can be imported and used in 'index.js' to define application routes.
 module.exports = router;
