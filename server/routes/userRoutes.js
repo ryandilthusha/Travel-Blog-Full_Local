@@ -36,7 +36,7 @@ router.get('/details', authenticateToken, async (req, res) =>
 
 
 
-//................................. ROUTE FOR TRAVEL STATS SECTION .................................//
+//................................. ROUTE FOR FETCH DETAILS FOR WHOLE TRAVEL STATS SECTION .................................//
 router.get('/stats', authenticateToken, async (req, res) => 
 {
     try 
@@ -60,6 +60,51 @@ router.get('/stats', authenticateToken, async (req, res) =>
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+
+
+//................................. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
+router.post('/countriesVisited', authenticateToken, async (req, res) => 
+{
+    // Extract the user ID from the authenticated user's data and the new 'countriesVisited' value from the request body.
+    const { userId } = req.user;            // // Extract the user ID from the JWT payload which is in network request header part
+    const { countriesVisited } = req.body;  // // Extract the new "countriesVisited" value from network request body part
+
+    // Additional Part: Validate the 'countriesVisited' input to ensure it's a positive number. (For example Countries Visited: -1 is not possible)
+    if (!countriesVisited || countriesVisited < 0) 
+    {
+        return res.status(400).json({ message: 'Invalid input for countries visited.' });
+    }
+
+    //Important Part
+    try 
+    {
+        const result = await query(
+            'UPDATE travel_stats SET countries_visited = $1 WHERE user_id = $2 RETURNING *;',
+            [countriesVisited, userId]  // Substitute $1 and $2 with "countriesVisited" and "userId" values respectively.
+        );
+
+        // Additional Part: Check if the query didn't update any rows, possibly because the user ID doesn't exist in "travel_stats".
+        if (result.rows.length === 0) {
+            // No rows updated, possibly because the user_id doesn't exist in travel_stats
+            return res.status(404).json({ message: 'User stats not found.' });
+        }
+
+        res.json(result.rows[0]);   // If the update is successful, return the updated record.
+    } 
+    
+    catch (error) 
+    {
+        console.error('Failed to update countries visited:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
+
+
 
 
 //................................. ROUTE FOR RECENT REVIEW SECTION .................................//
