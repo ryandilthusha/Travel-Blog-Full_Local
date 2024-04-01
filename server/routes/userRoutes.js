@@ -64,7 +64,7 @@ router.get('/stats', authenticateToken, async (req, res) =>
 
 
 
-//................................. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
+//................................. i. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
 router.post('/countriesVisited', authenticateToken, async (req, res) => 
 {
     // Extract the user ID from the authenticated user's data and the new 'countriesVisited' value from the request body.
@@ -100,6 +100,45 @@ router.post('/countriesVisited', authenticateToken, async (req, res) =>
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+
+//................................. ii. ROUTE FOR POST(UPDATE) THE Travel Stat - Cities Explored .................................//
+// Example using Express.js and assuming `query` is a function to execute SQL commands
+router.post('/citiesExplored', authenticateToken, async (req, res) => {
+    const { userId } = req.user; // Extract user ID from JWT
+    const { citiesExplored } = req.body;
+
+    try 
+    {
+        // Update the number of cities explored for the user
+        const result = await query(
+            'UPDATE travel_stats SET cities_explored = $1 WHERE user_id = $2 RETURNING cities_explored;',
+            [citiesExplored, userId]
+        );
+
+        if (result.rows.length === 0) 
+        {
+            return res.status(404).json({ message: 'User stats not found.' });
+        }
+
+        res.json(result.rows[0]);
+    } 
+    
+    catch (error) {
+        console.error('Failed to update cities explored:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
+
+
+
+
+
+
 
 
 
