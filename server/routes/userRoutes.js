@@ -1,3 +1,4 @@
+//................................. ROUTE FOR USER PROFILE SECTION .................................//
 // Require necessary modules: Express for routing, custom middleware for token authentication, and a database querying helper.
 const express = require('express');
 const authenticateToken = require('../middleware/authenticateToken.js');
@@ -19,7 +20,7 @@ router.get('/details', authenticateToken, async (req, res) =>
         if (result.rows.length > 0)     // Check if the query returned any rows. If so, the user exists, and their details are returned.
         {
             const user1 = result.rows[0];    // Extract the first row which contains the user's details
-            res.json({ username: user1.username, bio: user1.bio, profile_picture: user1.profile_picture });    // Send the user's database details as JSON.
+            res.json({ username: user1.username, bio: user1.bio, profile_picture: user1.profile_picture });    // Send the user's database details as JSON. (This send to Fronend profile.js file)
         } 
         else 
         {
@@ -32,6 +33,47 @@ router.get('/details', authenticateToken, async (req, res) =>
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+
+//................................. ROUTE FOR TRAVEL STATS SECTION .................................//
+router.get('/stats', authenticateToken, async (req, res) => 
+{
+    try 
+    {
+        const result = await query('SELECT * FROM travel_stats WHERE user_id = $1', [req.user.userId]); // Use userID from token's user object
+        
+        if (result.rows.length > 0) 
+        {
+            res.json(result.rows[0]);       // Send the user's database details as JSON. (This send to Fronend profile.js file)
+        } 
+
+        else 
+        {
+            res.status(404).json({ message: 'Stats not found' });
+        }
+    } 
+    
+    catch (error) 
+    {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+//................................. ROUTE FOR RECENT REVIEW SECTION .................................//
+/*
+.
+.
+.
+.
+.
+.
+
+*/
+
+
 
 
 

@@ -1,4 +1,4 @@
--- Users Table
+-- users Table (For Login and Registration)
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
@@ -14,6 +14,21 @@ SELECT * FROM users;
 
 
 
+-- travel_stats Table (For Profile)
+CREATE TABLE travel_stats (
+    user_id INT PRIMARY KEY,
+    countries_visited INT,
+    cities_explored INT,
+    favorite_destination VARCHAR(255),
+    bucket_list TEXT, -- Assuming this might be a longer list, TEXT is chosen
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+INSERT INTO travel_stats (user_id, countries_visited, cities_explored, favorite_destination, bucket_list)
+VALUES (1, 10, 25, 'Japan', 'Visit the Pyramids of Egypt, Explore the Amazon Rainforest');
+
+
+SELECT * FROM travel_stats;
 
 
 
