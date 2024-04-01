@@ -64,6 +64,47 @@ router.get('/stats', authenticateToken, async (req, res) =>
 
 
 
+
+
+//................................. ROUTE FOR POST NEW USER DETAILS WHICH FETCH FROM FRONTEND profile.js .................................//
+router.post('/updateDetails', authenticateToken, async (req, res) => {
+    const { userId } = req.user; // Extracted from JWT token
+    const { username, password, bio } = req.body;
+
+    // Proceed without hashing the password. Note: Storing passwords in plain text is not secure.
+
+    try 
+    {
+        const result = await query(
+            'UPDATE users SET username = $1, password = $2, bio = $3 WHERE user_id = $4 RETURNING username, bio;', // Not returning the password
+            [username, password, bio, userId]
+        );
+
+        if (result.rows.length === 0) 
+        {
+            // User not found in database
+            return res.status(404).json({ message: 'User not found.' });
+        }
+
+        // Return updated user details (excluding password)
+        res.json(result.rows[0]);
+
+    } 
+    
+    catch (error) {
+        console.error('Failed to update user details:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
+
+
+
+
+//................................. NOW ROUTES FOR POST(UPDATE) THE Travel Stat SECTION .................................//
+
 //................................. i. ROUTE FOR POST(UPDATE) THE Travel Stat - Countries Visited .................................//
 router.post('/countriesVisited', authenticateToken, async (req, res) => 
 {
