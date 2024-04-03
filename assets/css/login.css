@@ -2,7 +2,7 @@
 body, html {
     height: 100%;
     /* Sets a background image with no repeat, centered in the viewport, and scaled to cover the entire background area. */
-    background: url('../img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg') no-repeat center center fixed;
+    background: url('../img/login-page-background.jpg') no-repeat center center fixed;
     background-size: cover;
     /* Sets the default font family for the document. */
     font-family: 'Open Sans', sans-serif;

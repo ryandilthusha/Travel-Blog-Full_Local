@@ -23,7 +23,7 @@
     <div class="profile-header-container text-center">
          <!-- For profile picture and image icon -->
         <div class="profile-image-container d-inline-block" >
-            <img src="../assets/img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg" alt="Profile Picture" class="profile-header-img mb-2">
+            <img src="../assets/img/hiking-to-the-snowy-mountains-5k-jw-5120x2880.jpg" id="profilePicture" alt="Profile Picture" class="profile-header-img mb-2">
             <!-- Upload Profile Picture Button with FontAwesome Icon -->
             <button class="btn btn-outline-secondary btn-sm profile-pic-edit-btn" onclick="document.getElementById('profilePicUpload').click()">
                 <i class="fas fa-camera"></i> <!-- FontAwesome Camera Icon -->
@@ -32,18 +32,18 @@
             <input type="file" id="profilePicUpload" class="d-none" accept="image/*">
         </div>
         <!-- For profil picture and image icon -->
-        <h2>RyanWick1</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu in lorem molestie, non vehicula velit consectetur. Proin nec massa nisi.</p>
+        <h2 id="userName">RyanWick1</h2>
+        <p id="userBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
     
 
     <!-- ................ User Details Editable Section ................ -->
     <div class="user-details-section">
-        <form>
+        <form id="editUserForm">
             <!-- Username -->
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" placeholder="Username" value="JohnDoe">
+                <input type="text" id="username" class="form-control" placeholder="Username">
             </div>
             <!-- Password -->
             <div class="form-group">
@@ -66,7 +66,7 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <button type="button" id="saveChangesBtn"  class="btn btn-primary">Save User Changes</button>
 </div>
 
 
@@ -80,12 +80,12 @@
             <div class="col-md-6">
                 <div class="detail-item">
                     <span class="title">Countries Visited:</span>
-                    <span class="value">15</span>
+                    <span id="countriesVisited" class="value">15</span>
                     <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editCountriesModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
                 <div class="detail-item">
                     <span class="title">Cities Explored:</span>
-                    <span class="value">42</span>
+                    <span id="citiesExplored" class="value">42</span>
                     <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editCitiesModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
             </div>
@@ -93,18 +93,109 @@
             <div class="col-md-6">
                 <div class="detail-item">
                     <span class="title">Favorite Destination:</span>
-                    <span class="value">Kyoto, Japan</span>
+                    <span id="favoriteDestination" class="value">Kyoto, Japan</span>
                     <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editDestinationModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
                 <div class="detail-item">
                     <span class="title">Bucket List:</span>
-                    <span class="value">See the Northern Lights</span>
+                    <span id="bucketList" class="value">See the Northern Lights</span>
                     <button class="btn btn-outline-secondary btn-sm edit-detail-btn" data-toggle="modal" data-target="#editBucketListModal">Edit <i class="fa-regular fa-pen-to-square"></i></button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+        <!-- Modals for Eeach Edit Buttons ---------------->
+
+<!-- Modal for Editing Countries Visited -->
+<div class="modal fade" id="editCountriesModal" tabindex="-1" role="dialog" aria-labelledby="editCountriesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCountriesModalLabel">Edit Countries Visited</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <form id="editCountriesForm">
+                    <div class="form-group">
+                        <label for="countriesVisitedInput">Countries Visited</label>
+                        <input type="number" class="form-control" id="countriesVisitedInput" value="">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<!-- Modal for Editing Cities Explored -->
+<div class="modal fade" id="editCitiesModal" tabindex="-1" role="dialog" aria-labelledby="editCitiesModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editCitiesModalLabel">Edit Cities Explored</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <form id="editCitiesForm">
+                    <div class="form-group">
+                        <label for="citiesExploredInput">Cities Explored</label>
+                        <input type="number" class="form-control" id="citiesExploredInput" value="">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Editing Favorite Destination -->
+<div class="modal fade" id="editDestinationModal" tabindex="-1" role="dialog" aria-labelledby="editDestinationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editDestinationModalLabel">Edit Favorite Destination</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <form id="editDestinationForm">
+                    <div class="form-group">
+                        <label for="favoriteDestinationInput">Favorite Destination</label>
+                        <input type="text" class="form-control" id="favoriteDestinationInput" value="">
+                    </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<!-- Modal for Editing Bucket List -->
+<div class="modal fade" id="editBucketListModal" tabindex="-1" role="dialog" aria-labelledby="editBucketListModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBucketListModalLabel">Edit Bucket List</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">    <span aria-hidden="true">&times;</span> </button>
+            </div>
+            <div class="modal-body">
+                <form id="editBucketListForm">
+                    <div class="form-group">
+                        <label for="bucketListInput">Bucket List</label>
+                        <textarea class="form-control" id="bucketListInput" rows="3"></textarea>
+                    </div>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+
+
 
 
 
@@ -158,5 +249,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.6/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="./js/profile.js" type="module"></script>
+
 </body>
 </html>

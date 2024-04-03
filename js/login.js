@@ -35,7 +35,21 @@ login_btn.addEventListener('click', function(event) {
     .then(user => 
     {        
         console.log('Login successful', user); // Log a successful login message and user details to the console for debugging.
-        window.location.href = '/profile.html'; // Redirect the user to the profile page upon successful login.
+        
+        const token = user.getToken();  // Retrieve the token using the getter method we defined in the User class.
+
+        if (token)
+        {
+            localStorage.setItem('token', token);  // Save the token to localStorage (Can checked browser developer tools-> Application -> Local Storage)
+            window.location.href = '/profile.html'; // Redirect the user to the profile page upon successful login.
+        }
+        else
+        {
+            throw new Error('Token was not provided in the login.js response');
+        }
+
+        
+        
     })
 
     // If the authentication fails (e.g., incorrect credentials), the promise is rejected, and this catch block executes.

@@ -1,7 +1,7 @@
 /* General background styles, font setup, and padding for the main content area */
 body, html {
     height: 100%;
-    background: url('../img/climber-climbing-hiker-hiking.jpg') no-repeat center center fixed; 
+    background: url('../img/profile-page-background.jpg') no-repeat center center fixed; 
     background-size: cover;
     font-family: 'Open Sans', sans-serif;
 }

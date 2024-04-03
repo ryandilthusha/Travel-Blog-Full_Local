@@ -7,26 +7,39 @@ class User
     #bio;
     #profilePicture;
 
+    #token; // Introduce a token property
+
     constructor(username, bio, profilePicture) 
     {
         this.#username = username;
         this.#bio = bio;
         this.#profilePicture = profilePicture;
+        this.#token = null; // Initialize the token as null
     }
 
-    getUsername() 
-    {
+    // Getter method for username
+    getUsername() {
         return this.#username;
     }
 
-    getBio() 
-    {
+    // Getter method for bio
+    getBio() {
         return this.#bio;
     }
 
-    getProfilePicture() 
-    {
+    // Getter method for profile picture
+    getProfilePicture() {
         return this.#profilePicture;
+    }
+
+    // Getter method for token
+    getToken() {
+        return this.#token;
+    }
+
+    // Setter method for token
+    setToken(token) {
+        this.#token = token;
     }
 }
 

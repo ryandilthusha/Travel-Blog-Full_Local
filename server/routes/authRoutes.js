@@ -33,7 +33,29 @@ router.post('/login', async (req, res) => {
         
         // Execute a database query to find a user by 'username'. '$1' is replaced by 'username' to prevent SQL injection.
         const result = await query('SELECT * FROM users WHERE username = $1', [username]);
-        
+        /*
+        result = {
+            command: 'SELECT',    // The SQL command that was executed
+            rowCount: 1,          // The number of rows affected by the SQL command
+            oid: null,            // Object ID of the row
+            rows: [
+                {
+                    user_id: 1,   // The user_id of the matched user, assuming '123' was the first user inserted
+                    username: '123', // The username of the matched user
+                    password: '123'  // The password of the matched user
+                }
+            ],
+            fields: [
+                // Array of field information objects (name, tableID, columnID, dataTypeID, etc.)
+                // Details about each column in the result set
+            ],
+            _parsers: [Function: parseBigInteger, Function: noParse, Function: noParse],
+            RowCtor: null,
+            rowAsArray: false
+            // Additional internal details about the result
+        }
+
+        */
 
         
         if (result.rows.length > 0)     // If the query returns at least one row, it means a user with the provided username exists.

@@ -24,7 +24,7 @@ class Users {
         {
             
             const requestPayload = JSON.stringify({ username, password });  // Convert the username and password into a JSON string for the request body.
-            /*                                                              ex:   requestPayload = JSON.stringify({ username: 'user123', password: 'pass123' })*/
+            /*                                                              ex:   requestPayload = { 'username': 'user123', 'password': 'pass123' }*/
             
             // Make a POST request to the backend API's login endpoint with the provided credentials.
             fetch(`${this.#backend_url}/api/auth/login`,    // 'this.#backend_url' is the base URL for your backend, and '/api/auth/login' is the specific endpoint for user login.
@@ -50,6 +50,7 @@ class Users {
             {
                 "login": true,
                 "message": "Login successful",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxMTk2ODUyOSwiZXhwIjoxNzExOTcyMTI5fQ.zaXN-faJ4uHK05_GgIOHIWS4JOZR9TkZd5-XRTb7UH4l",
                 "username": "user123",
                 "bio": "A short bio here",
                 "profile_picture": "url/to/profile_picture.jpg"
@@ -62,6 +63,9 @@ class Users {
                 {
                     // If login is successful, instantiate a new User with details from the response.
                     const user = new User(data.username, data.bio, data.profile_picture);
+
+                    user.setToken(data.token); // Set the token that we receive from the login response
+
                     resolve(user);  //*** FINALLY RETURNs: user Object (This retreives by Frontend login.js eventHadler)
                 } 
                 
